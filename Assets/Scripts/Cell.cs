@@ -9,19 +9,25 @@ public class Cell : MonoBehaviour
     [SerializeField] private Color defaultColor;
     [SerializeField] private Image background;
     private TextMeshProUGUI display;
-    private int correctNumber;
+    public int CorrectNumber { get; private set; }
+    public bool Hidden { get; set; } = false;
 
     public void SetCorrectNumber(int number)
     {
         this.display = GetComponentInChildren<TextMeshProUGUI>();
-        this.correctNumber = number;
-        this.display.text = this.correctNumber.ToString();
-        //this.display.gameObject.SetActive(false);
+        this.CorrectNumber = number;
+        this.display.text = this.CorrectNumber.ToString();
+    }
+
+    public void Hide()
+    {
+        this.gameObject.SetActive(false);
+        this.Hidden = true;
     }
 
     public bool Guess(short number)
     {
-        if (this.correctNumber == number)
+        if (this.CorrectNumber == number)
         {
             this.display.gameObject.SetActive(true);
             return true;
