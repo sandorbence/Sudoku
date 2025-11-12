@@ -13,4 +13,9 @@ public class NewGame : MonoBehaviour
             GameManager.Instance.ShowDifficultyChooser();
         });
     }
+
+    public void OnDestroy()
+    {
+        this.button.onClick.RemoveAllListeners();
+    }
 }

@@ -26,10 +26,19 @@ public class DifficultyChooser : MonoBehaviour
         this.gameObject.SetActive(false);
 
         this.easyButton.onClick.AddListener(() => GameManager.Instance.StartGame(Difficulty.Easy));
+        this.mediumButton.onClick.AddListener(() => GameManager.Instance.StartGame(Difficulty.Medium));
+        this.hardButton.onClick.AddListener(() => GameManager.Instance.StartGame(Difficulty.Hard));
     }
 
     public void Show()
     {
         this.gameObject.SetActive(true);
+    }
+
+    public void OnDestroy()
+    {
+        this.easyButton.onClick.RemoveAllListeners();
+        this.mediumButton.onClick.RemoveAllListeners();
+        this.hardButton.onClick.RemoveAllListeners();
     }
 }
