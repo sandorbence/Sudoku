@@ -26,6 +26,7 @@ public class BoardBuilder : MonoBehaviour
         int[,] board = new int[9, 9];
         System.Random random = new System.Random();
         float startX = -4 * this.cellOffset;
+        float startY = -4 * this.cellOffset;
 
         this.FillBoardRandom(board, random);
 
@@ -34,7 +35,9 @@ public class BoardBuilder : MonoBehaviour
             for (int j = 0; j < 9; j++)
             {
                 GameObject cellObj = Instantiate(this.cellPrefab, this.cellParent);
-                cellObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(startX + i * this.cellOffset, j * this.cellOffset);
+                cellObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(
+                    startX + i * this.cellOffset,
+                    startY + j * this.cellOffset);
                 Cell cell = cellObj.GetComponent<Cell>();
                 cell.SetCorrectNumber(board[i, j]);
 
