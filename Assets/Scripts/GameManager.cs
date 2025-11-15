@@ -6,9 +6,11 @@ public class GameManager : MonoBehaviour
 {
     private Cell activeCell;
     private Cell[,] filledBoard;
-    private Difficulty difficulty;
+    public Difficulty Difficulty { get; private set; }
 
     public static GameManager Instance;
+    public short Mistakes { get; private set; } = 0;
+    private bool isInNoteMode = false;
 
     private void Awake()
     {
@@ -46,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame(Difficulty diff)
     {
-        this.difficulty = diff;
+        this.Difficulty = diff;
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
     }
 
@@ -54,7 +56,7 @@ public class GameManager : MonoBehaviour
     {
         if (scene.name == "Game")
         {
-            int cellsToRemove = this.difficulty switch
+            int cellsToRemove = this.Difficulty switch
             {
                 Difficulty.Easy => 40,
                 Difficulty.Medium => 45,
@@ -65,5 +67,31 @@ public class GameManager : MonoBehaviour
             this.filledBoard = new Cell[9, 9];
             BoardBuilder.Instance.BuildBoard(this.filledBoard, cellsToRemove);
         }
+    }
+
+    public void WriteNumber(short number)
+    {
+        if (this.isInNoteMode)
+        {
+            this.activeCell.MakeNote(number);
+            return;
+        }
+
+        if (!this.activeCell.Guess(number)) this.Mistakes++;
+    }
+
+    public void Undo()
+    {
+
+    }
+
+    public void Erase()
+    {
+        this.activeCell.DeleteNumber();
+    }
+
+    public void TriggerNoteMode()
+    {
+        this.isInNoteMode = !this.isInNoteMode;
     }
 }

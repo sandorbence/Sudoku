@@ -134,9 +134,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f817ada8cc29def4a8bd2fa5ecc7badc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeColor: {r: 0.49803922, g: 0.5836768, b: 0.7921569, a: 1}
-  defaultColor: {r: 1, g: 1, b: 1, a: 0}
+  activeBackgroundColor: {r: 0.2687344, g: 0.7453182, b: 0.9339623, a: 0.47058824}
+  defaultBackgroundColor: {r: 1, g: 1, b: 1, a: 0}
   background: {fileID: 5208440096982041806}
+  incorrectTextColor: {r: 0.8018868, g: 0.1021271, b: 0.1021271, a: 1}
+  noteTextColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
+  noteBackgroundColor: {r: 0.54913217, g: 0.6037736, b: 0.1509434, a: 0.47058824}
 --- !u!1 &6193508799497052020
 GameObject:
   m_ObjectHideFlags: 0
