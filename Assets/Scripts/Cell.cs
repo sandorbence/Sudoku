@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -90,7 +91,18 @@ public class Cell : MonoBehaviour
 
     private void DisplayNotes()
     {
-        this.display.text = string.Join(" ", this.notes);
+        short count = 0;
+        StringBuilder text = new StringBuilder();
 
+        foreach (short note in this.notes)
+        {
+            text.Append(note);
+            text.Append(' ');
+            count++;
+
+            if (count % 3 == 0) text.Append("\n");
+        }
+
+        this.display.text = text.ToString();
     }
 }
