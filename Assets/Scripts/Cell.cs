@@ -9,12 +9,16 @@ public class Cell : MonoBehaviour
     [Header("Normal display")]
     [SerializeField] private Color activeBackgroundColor;
     [SerializeField] private Color defaultBackgroundColor;
+    [SerializeField] private TextAlignmentOptions defaultAlignment;
+    [SerializeField] private int defaultFontSize;
     [SerializeField] private Image background;
     [Header("Incorrect display")]
     [SerializeField] private Color incorrectTextColor;
     [Header("Note display")]
     [SerializeField] private Color noteTextColor;
     [SerializeField] private Color noteBackgroundColor;
+    [SerializeField] private TextAlignmentOptions noteAlignment;
+    [SerializeField] private int noteFontSize;
 
     private TextMeshProUGUI display;
     private Button button;
@@ -28,6 +32,7 @@ public class Cell : MonoBehaviour
     {
         this.display = GetComponentInChildren<TextMeshProUGUI>();
         this.defaultTextColor = this.display.color;
+        this.ChangeDisplayMode(defaultDisplay: true);
         this.display.text = number.ToString();
         this.button = GetComponent<Button>();
         this.CorrectNumber = number;
@@ -36,19 +41,14 @@ public class Cell : MonoBehaviour
         this.DeselectActive();
     }
 
-    public void SetVisibility(bool enabled)
-    {
-        this.display.gameObject.SetActive(enabled);
-    }
-
     public bool Guess(short number)
     {
         if (!this.editable) return true;
 
         bool isCorrect = this.CorrectNumber == number;
+        this.ChangeDisplayMode(defaultDisplay: true);
         this.display.color = isCorrect ? this.defaultTextColor : this.incorrectTextColor;
         this.display.text = number.ToString();
-        this.SetVisibility(isCorrect);
         this.editable = !isCorrect;
 
         return isCorrect;
@@ -58,18 +58,16 @@ public class Cell : MonoBehaviour
     {
         if (!this.editable) return;
 
+        this.ChangeDisplayMode(defaultDisplay: false);
         this.notes.Add(number);
-        this.background.color = this.noteBackgroundColor;
-        this.display.color = this.noteTextColor;
         this.DisplayNotes();
-        this.SetVisibility(true);
     }
 
     public void DeleteNumber()
     {
         if (!this.editable) return;
 
-        this.background.color = this.defaultBackgroundColor;
+        this.ChangeDisplayMode(defaultDisplay: true);
         this.display.text = string.Empty;
         this.notes.Clear();
     }
@@ -104,5 +102,13 @@ public class Cell : MonoBehaviour
         }
 
         this.display.text = text.ToString();
+    }
+
+    private void ChangeDisplayMode(bool defaultDisplay)
+    {
+        this.background.color = defaultDisplay ? this.defaultBackgroundColor : this.noteBackgroundColor;
+        this.display.color = defaultDisplay ? this.defaultTextColor : this.noteTextColor;
+        this.display.alignment = defaultDisplay ? this.defaultAlignment : this.noteAlignment;
+        this.display.fontSize = defaultDisplay ? this.defaultFontSize : this.noteFontSize;
     }
 }

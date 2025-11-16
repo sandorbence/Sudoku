@@ -51,7 +51,7 @@ public class BoardBuilder : MonoBehaviour
         {
             for (int j = 0; j < 9; j++)
             {
-                if (board[i, j] == 0) filledBoard[i, j].SetVisibility(false);
+                if (board[i, j] == 0) filledBoard[i, j].DeleteNumber();
             }
         }
     }
