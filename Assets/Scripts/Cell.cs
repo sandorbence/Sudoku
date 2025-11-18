@@ -28,6 +28,7 @@ public class Cell : MonoBehaviour
     private Color defaultTextColor;
     private bool editable = true;
     private HashSet<short> notes = new HashSet<short>();
+    private bool isActive = false;
 
     public int CorrectNumber { get; private set; }
 
@@ -83,11 +84,13 @@ public class Cell : MonoBehaviour
     public void SetAsActive()
     {
         this.background.color = this.activeBackgroundColor;
+        this.isActive = true;
     }
 
     public void DeselectActive()
     {
         this.background.color = this.notes.Count != 0 ? this.noteBackgroundColor : this.defaultBackgroundColor;
+        this.isActive = false;
     }
 
     private void DisplayNotes()
@@ -109,7 +112,8 @@ public class Cell : MonoBehaviour
 
     private void ChangeDisplayMode(bool defaultDisplay)
     {
-        this.background.color = defaultDisplay ? this.defaultBackgroundColor : this.noteBackgroundColor;
+        this.background.color = this.isActive ? this.activeBackgroundColor :
+            defaultDisplay ? this.defaultBackgroundColor : this.noteBackgroundColor;
         this.display.color = defaultDisplay ? this.defaultTextColor : this.noteTextColor;
         this.display.alignment = defaultDisplay ? this.defaultAlignment : this.noteAlignment;
         this.display.fontSize = defaultDisplay ? this.defaultFontSize : this.noteFontSize;
