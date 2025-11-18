@@ -10,10 +10,10 @@ public class GameManager : MonoBehaviour
     private bool isInNoteMode = false;
     private static List<NumberInput> numberInputs = new List<NumberInput>();
     private Stack<PlayerAction> playerActions = new Stack<PlayerAction>();
+    private short mistakes = 0;
 
     public Difficulty Difficulty { get; private set; }
     public static GameManager Instance;
-    public short Mistakes { get; private set; } = 0;
 
     private void Awake()
     {
@@ -82,7 +82,10 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        if (!this.activeCell.Guess(number)) this.Mistakes++;
+        if (!this.activeCell.Guess(number))
+        {
+            MistakesDisplay.Instance.DisplayMistakes(++this.mistakes);
+        }
     }
 
     public void Undo()
