@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,11 +7,13 @@ public class GameManager : MonoBehaviour
 {
     private Cell activeCell;
     private Cell[,] filledBoard;
-    public Difficulty Difficulty { get; private set; }
+    private bool isInNoteMode = false;
+    private static List<NumberInput> numberInputs = new List<NumberInput>();
+    private Stack<PlayerAction> playerActions = new Stack<PlayerAction>();
 
+    public Difficulty Difficulty { get; private set; }
     public static GameManager Instance;
     public short Mistakes { get; private set; } = 0;
-    private bool isInNoteMode = false;
 
     private void Awake()
     {
@@ -71,6 +74,8 @@ public class GameManager : MonoBehaviour
 
     public void WriteNumber(short number)
     {
+        this.PushPlayerAction();
+
         if (this.isInNoteMode)
         {
             this.activeCell.MakeNote(number);
@@ -82,16 +87,38 @@ public class GameManager : MonoBehaviour
 
     public void Undo()
     {
+        if (this.playerActions.Count == 0) return;
 
+        PlayerAction lastPlayerAction = this.playerActions.Pop();
+        lastPlayerAction.Undo();
     }
 
     public void Erase()
     {
-        this.activeCell.DeleteNumber();
+        this.PushPlayerAction();
+        this.activeCell.ClearCell();
     }
 
-    public void TriggerNoteMode()
+    public void AddInput(NumberInput input)
+    {
+        numberInputs.Add(input);
+    }
+
+    private void PushPlayerAction()
+    {
+        CellState currentCellState = this.activeCell.GetCurrentState();
+        this.playerActions.Push(new PlayerAction { AffectedCell = this.activeCell, PreviousState = currentCellState });
+    }
+
+    private void ClearInputs()
+    {
+        numberInputs.Clear();
+    }
+
+    public void ToggleNoteMode()
     {
         this.isInNoteMode = !this.isInNoteMode;
+        Pencil.Instance.ToggleNoteModeDisplay(this.isInNoteMode);
+        numberInputs.ForEach(i => i.ToggleNoteDisplay(this.isInNoteMode));
     }
 }

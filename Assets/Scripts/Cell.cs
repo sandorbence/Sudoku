@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,6 +48,7 @@ public class Cell : MonoBehaviour
     {
         if (!this.editable) return true;
 
+        this.ClearCell();
         bool isCorrect = this.CorrectNumber == number;
         this.ChangeDisplayMode(defaultDisplay: true);
         this.display.color = isCorrect ? this.defaultTextColor : this.incorrectTextColor;
@@ -63,11 +67,10 @@ public class Cell : MonoBehaviour
         this.DisplayNotes();
     }
 
-    public void DeleteNumber()
+    public void ClearCell()
     {
         if (!this.editable) return;
 
-        this.ChangeDisplayMode(defaultDisplay: true);
         this.display.text = string.Empty;
         this.notes.Clear();
     }
@@ -110,5 +113,35 @@ public class Cell : MonoBehaviour
         this.display.color = defaultDisplay ? this.defaultTextColor : this.noteTextColor;
         this.display.alignment = defaultDisplay ? this.defaultAlignment : this.noteAlignment;
         this.display.fontSize = defaultDisplay ? this.defaultFontSize : this.noteFontSize;
+    }
+
+    public void SetCellState(CellState state)
+    {
+        this.editable = true;
+
+        if (state.Guess != 0)
+        {
+            this.Guess(state.Guess);
+            return;
+        }
+
+        this.ClearCell();
+
+        if (state.Notes != null)
+        {
+            notes = new HashSet<short>(state.Notes);
+            this.ChangeDisplayMode(defaultDisplay: false);
+            this.DisplayNotes();
+        }
+    }
+
+    public CellState GetCurrentState()
+    {
+        return new CellState
+        {
+            Guess = (notes.Count != 0 || this.display.text.Equals(string.Empty)) ?
+            (short)0 : Convert.ToInt16(this.display.text),
+            Notes = notes.Count == 0 ? null : new HashSet<short>(notes)
+        };
     }
 }
