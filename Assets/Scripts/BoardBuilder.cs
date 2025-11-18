@@ -51,7 +51,11 @@ public class BoardBuilder : MonoBehaviour
         {
             for (int j = 0; j < 9; j++)
             {
-                if (board[i, j] == 0) filledBoard[i, j].ClearCell();
+                if (board[i, j] == 0)
+                {
+                    filledBoard[i, j].SetAsEditable();
+                    filledBoard[i, j].ClearCell();
+                }
             }
         }
     }

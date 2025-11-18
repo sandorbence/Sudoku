@@ -26,7 +26,7 @@ public class Cell : MonoBehaviour
     private TextMeshProUGUI display;
     private Button button;
     private Color defaultTextColor;
-    private bool editable = true;
+    private bool editable = false;
     private HashSet<short> notes = new HashSet<short>();
     private bool isActive = false;
 
@@ -43,6 +43,11 @@ public class Cell : MonoBehaviour
 
         this.button.onClick.AddListener(() => GameManager.Instance.SelectActiveCell(this));
         this.DeselectActive();
+    }
+
+    public void SetAsEditable()
+    {
+        this.editable = true;
     }
 
     public bool Guess(short number)
