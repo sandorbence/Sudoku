@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -61,7 +62,7 @@ public class GameManager : MonoBehaviour
         {
             int cellsToRemove = this.Difficulty switch
             {
-                Difficulty.Easy => 40,
+                Difficulty.Easy => 5,
                 Difficulty.Medium => 45,
                 Difficulty.Hard => 50,
                 _ => throw new Exception("Not a valid difficulty")
@@ -85,7 +86,10 @@ public class GameManager : MonoBehaviour
         if (!this.activeCell.Guess(number))
         {
             MistakesDisplay.Instance.DisplayMistakes(++this.mistakes);
+            return;
         }
+
+        if (this.CheckForWin()) this.SetGameOver();
     }
 
     public void Undo()
@@ -113,9 +117,22 @@ public class GameManager : MonoBehaviour
         this.playerActions.Push(new PlayerAction { AffectedCell = this.activeCell, PreviousState = currentCellState });
     }
 
+    public void BackToMain()
+    {
+        this.ClearInputs();
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+    }
+
     private void ClearInputs()
     {
         numberInputs.Clear();
+    }
+
+    private bool CheckForWin() => this.filledBoard.Cast<Cell>().All(x => !x.Editable);
+
+    private void SetGameOver()
+    {
+        Debug.Log("Victory!!!");
     }
 
     public void ToggleNoteMode()

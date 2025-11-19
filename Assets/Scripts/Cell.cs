@@ -26,11 +26,11 @@ public class Cell : MonoBehaviour
     private TextMeshProUGUI display;
     private Button button;
     private Color defaultTextColor;
-    private bool editable = false;
     private HashSet<short> notes = new HashSet<short>();
     private bool isActive = false;
 
     public int CorrectNumber { get; private set; }
+    public bool Editable { get; private set; } = false;
 
     public void SetCorrectNumber(int number)
     {
@@ -47,26 +47,26 @@ public class Cell : MonoBehaviour
 
     public void SetAsEditable()
     {
-        this.editable = true;
+        this.Editable = true;
     }
 
     public bool Guess(short number)
     {
-        if (!this.editable) return true;
+        if (!this.Editable) return true;
 
         this.ClearCell();
         bool isCorrect = this.CorrectNumber == number;
         this.ChangeDisplayMode(defaultDisplay: true);
         this.display.color = isCorrect ? this.defaultTextColor : this.incorrectTextColor;
         this.display.text = number.ToString();
-        this.editable = !isCorrect;
+        this.Editable = !isCorrect;
 
         return isCorrect;
     }
 
     public void MakeNote(short number)
     {
-        if (!this.editable) return;
+        if (!this.Editable) return;
 
         this.ChangeDisplayMode(defaultDisplay: false);
         this.notes.Add(number);
@@ -75,7 +75,7 @@ public class Cell : MonoBehaviour
 
     public void ClearCell()
     {
-        if (!this.editable) return;
+        if (!this.Editable) return;
 
         this.display.text = string.Empty;
         this.notes.Clear();
@@ -126,7 +126,7 @@ public class Cell : MonoBehaviour
 
     public void SetCellState(CellState state)
     {
-        this.editable = true;
+        this.Editable = true;
 
         if (state.Guess != 0)
         {
