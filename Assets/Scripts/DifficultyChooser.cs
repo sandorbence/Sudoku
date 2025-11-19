@@ -40,5 +40,7 @@ public class DifficultyChooser : MonoBehaviour
         this.easyButton.onClick.RemoveAllListeners();
         this.mediumButton.onClick.RemoveAllListeners();
         this.hardButton.onClick.RemoveAllListeners();
+
+        Instance = null;
     }
 }

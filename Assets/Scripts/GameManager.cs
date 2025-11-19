@@ -54,6 +54,11 @@ public class GameManager : MonoBehaviour
     {
         this.Difficulty = diff;
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
+
+        if (GameOverDisplay.Instance != null)
+        {
+            GameOverDisplay.Instance.Hide();
+        }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
@@ -132,7 +137,7 @@ public class GameManager : MonoBehaviour
 
     private void SetGameOver()
     {
-        Debug.Log("Victory!!!");
+        GameOverDisplay.Instance.Show();
     }
 
     public void ToggleNoteMode()
