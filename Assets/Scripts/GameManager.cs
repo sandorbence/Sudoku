@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
         {
             int cellsToRemove = this.Difficulty switch
             {
-                Difficulty.Easy => 5,
+                Difficulty.Easy => 40,
                 Difficulty.Medium => 45,
                 Difficulty.Hard => 50,
                 _ => throw new Exception("Not a valid difficulty")
