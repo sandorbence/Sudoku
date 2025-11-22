@@ -1,25 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class DifficultyChooser : MonoBehaviour
+public class DifficultyChooser : Singleton<DifficultyChooser>
 {
     [SerializeField] private Button easyButton;
     [SerializeField] private Button mediumButton;
     [SerializeField] private Button hardButton;
-
-    public static DifficultyChooser Instance;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
 
     private void Start()
     {
@@ -35,12 +21,12 @@ public class DifficultyChooser : MonoBehaviour
         this.gameObject.SetActive(true);
     }
 
-    public void OnDestroy()
+    public override void OnDestroy()
     {
+        base.OnDestroy();
+
         this.easyButton.onClick.RemoveAllListeners();
         this.mediumButton.onClick.RemoveAllListeners();
         this.hardButton.onClick.RemoveAllListeners();
-
-        Instance = null;
     }
 }

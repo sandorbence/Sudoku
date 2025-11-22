@@ -4,34 +4,21 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     private Cell activeCell;
     private Cell[,] filledBoard;
     private bool isInNoteMode = false;
     private static List<NumberInput> numberInputs = new List<NumberInput>();
     private Stack<PlayerAction> playerActions = new Stack<PlayerAction>();
-    private short mistakes = 0;
 
     public Difficulty Difficulty { get; private set; }
-    public static GameManager Instance;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
 
     private void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
         SceneManager.sceneLoaded += this.OnSceneLoaded;
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
     public void SelectActiveCell(Cell cell)
@@ -55,9 +42,9 @@ public class GameManager : MonoBehaviour
         this.Difficulty = diff;
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
 
-        if (GameOverDisplay.Instance != null)
+        if (PauseMenuDisplay.Instance != null)
         {
-            GameOverDisplay.Instance.Hide();
+            PauseMenuDisplay.Instance.Hide();
         }
     }
 
@@ -90,7 +77,7 @@ public class GameManager : MonoBehaviour
 
         if (!this.activeCell.Guess(number))
         {
-            MistakesDisplay.Instance.DisplayMistakes(++this.mistakes);
+            MistakesDisplay.Instance.IncrementMistakes();
             return;
         }
 
@@ -137,7 +124,7 @@ public class GameManager : MonoBehaviour
 
     private void SetGameOver()
     {
-        GameOverDisplay.Instance.Show();
+        PauseMenuDisplay.Instance.Show(gameEnded: true);
     }
 
     public void ToggleNoteMode()
@@ -145,5 +132,10 @@ public class GameManager : MonoBehaviour
         this.isInNoteMode = !this.isInNoteMode;
         Pencil.Instance.ToggleNoteModeDisplay(this.isInNoteMode);
         numberInputs.ForEach(i => i.ToggleNoteDisplay(this.isInNoteMode));
+    }
+
+    public void PauseGame()
+    {
+        PauseMenuDisplay.Instance.Show(gameEnded: false);
     }
 }

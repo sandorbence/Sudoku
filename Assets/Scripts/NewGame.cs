@@ -5,7 +5,7 @@ public class NewGame : MonoBehaviour
 {
     private Button button;
 
-    void Start()
+    private void Start()
     {
         this.button = GetComponent<Button>();
         this.button.onClick.AddListener(() =>

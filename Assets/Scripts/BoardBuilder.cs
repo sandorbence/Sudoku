@@ -2,24 +2,11 @@
 using System.Linq;
 using UnityEngine;
 
-public class BoardBuilder : MonoBehaviour
+public class BoardBuilder : Singleton<BoardBuilder>
 {
     [SerializeField] private Transform cellParent;
     [SerializeField] private GameObject cellPrefab;
     [SerializeField] private float cellOffset;
-    public static BoardBuilder Instance;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
 
     public void BuildBoard(Cell[,] filledBoard, int cellsToRemove)
     {

@@ -1,26 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class Pencil : MonoBehaviour
+public class Pencil : Singleton<Pencil>
 {
     [SerializeField] private Color activeBackgroundColor;
     private Color defaultBackgroundColor;
     private Button button;
     private Image background;
-
-    public static Pencil Instance { get; private set; }
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
 
     private void Start()
     {
@@ -33,10 +19,5 @@ public class Pencil : MonoBehaviour
     public void ToggleNoteModeDisplay(bool enabled)
     {
         this.background.color = enabled ? this.activeBackgroundColor : this.defaultBackgroundColor;
-    }
-
-    public void OnDestroy()
-    {
-        this.button.onClick.RemoveAllListeners();
     }
 }
