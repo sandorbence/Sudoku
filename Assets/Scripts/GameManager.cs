@@ -134,8 +134,15 @@ public class GameManager : Singleton<GameManager>
         numberInputs.ForEach(i => i.ToggleNoteDisplay(this.isInNoteMode));
     }
 
-    public void PauseGame()
+    public void ShowInGameSettings()
     {
+        Time.timeScale = 0f;
         PauseMenuDisplay.Instance.Show(gameEnded: false);
+    }
+
+    public void ResumeGame()
+    {
+        PauseMenuDisplay.Instance.Hide();
+        Time.timeScale = 1f;
     }
 }

@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenuDisplay : Singleton<PauseMenuDisplay>
 {
     [SerializeField] private PauseMenuTitle title;
     [SerializeField] private GameScore score;
+    [SerializeField] private Button cancelButton;
 
     private void Start()
     {
         this.gameObject.SetActive(false);
+        this.cancelButton.onClick.AddListener(() => GameManager.Instance.ResumeGame());
     }
 
     public void Show(bool gameEnded)

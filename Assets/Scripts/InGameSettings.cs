@@ -9,6 +9,6 @@ public class InGameSettings : MonoBehaviour
     {
         this.button = GetComponent<Button>();
         this.button.onClick.AddListener(() =>
-        PauseMenuDisplay.Instance.Show(gameEnded: false));
+        GameManager.Instance.ShowInGameSettings());
     }
 }
