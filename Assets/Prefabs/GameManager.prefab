@@ -44,7 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40553b0d5566ec3439366d80022348dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficultyChooser: {fileID: 0}
-  boardBuilder: {fileID: 326064019730353165, guid: fd3bd3ca3865ef14e97165acb15d7574, type: 3}
-  mistakes: {fileID: 9026630535052171466, guid: cf5fe26d2b510f24b8c6a06fb819a77e, type: 3}
-  pencil: {fileID: 3030344601070648885, guid: d14d6f80f7408b148a42da4ffd26eb03, type: 3}
+  audioMixer: {fileID: 24100000, guid: a034de1991f320b448651afe2202f05d, type: 2}

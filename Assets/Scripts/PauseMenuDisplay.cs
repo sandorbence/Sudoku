@@ -6,6 +6,8 @@ public class PauseMenuDisplay : Singleton<PauseMenuDisplay>
     [SerializeField] private PauseMenuTitle title;
     [SerializeField] private GameScore score;
     [SerializeField] private Button cancelButton;
+    [SerializeField] private VolumeSetter soundVolume;
+    [SerializeField] private VolumeSetter musicVolume;
 
     private void Start()
     {
@@ -17,6 +19,8 @@ public class PauseMenuDisplay : Singleton<PauseMenuDisplay>
     {
         this.title.Set(gameEnded ? "Game Over!" : "Game Paused");
         this.score.SetVisibility(gameEnded);
+        this.soundVolume.SetVisibility(!gameEnded);
+        this.musicVolume.SetVisibility(!gameEnded);
         this.gameObject.SetActive(true);
     }
 

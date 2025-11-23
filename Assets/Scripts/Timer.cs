@@ -15,7 +15,7 @@ public class Timer : MonoBehaviour
     private void Update()
     {
         this.elapsedTime += Time.deltaTime;
-        TimeSpan time = TimeSpan.FromSeconds(elapsedTime);
+        TimeSpan time = TimeSpan.FromSeconds(this.elapsedTime);
         this.display.text = time.ToString(@"hh\:mm\:ss");
     }
 }

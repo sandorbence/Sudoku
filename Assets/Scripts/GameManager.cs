@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
+    [SerializeField] private AudioMixer audioMixer;
     private Cell activeCell;
     private Cell[,] filledBoard;
     private bool isInNoteMode = false;
@@ -144,5 +146,18 @@ public class GameManager : Singleton<GameManager>
     {
         PauseMenuDisplay.Instance.Hide();
         Time.timeScale = 1f;
+    }
+
+    public void ChangeVolume(float value, VolumeType volumeType)
+    {
+        string volume = volumeType.Equals(VolumeType.Sound) ? "SoundVolume" : "MusicVolume";
+
+        if (value <= 0.0001f)
+        {
+            this.audioMixer.SetFloat(volume, -80f);
+            return;
+        }
+
+        this.audioMixer.SetFloat(volume, Mathf.Log10(value) * 20);
     }
 }
