@@ -9,9 +9,9 @@ public class VolumeSetter : MonoBehaviour
     private void Start()
     {
         this.slider = GetComponentInChildren<Slider>();
-        GameManager.Instance.ChangeVolume(this.slider.value, this.volumeType);
+        AudioManager.Instance.ChangeVolume(this.slider.value, this.volumeType);
         this.slider.onValueChanged.AddListener(value
-            => GameManager.Instance.ChangeVolume(value, this.volumeType));
+            => AudioManager.Instance.ChangeVolume(value, this.volumeType));
     }
 
     public void SetVisibility(bool enabled)
