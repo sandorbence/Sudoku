@@ -3412,6 +3412,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1522765516}
+  - component: {fileID: 1522765517}
   m_Layer: 5
   m_Name: MusicVolume
   m_TagString: Untagged
@@ -3440,6 +3441,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1522765517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522765515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c66f266e3ab054d95f7bf444d78410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1431588090}
+  volumeType: 1
 --- !u!1001 &1534611289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3655,9 +3670,9 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 06559e5cd322f1c40a0cd64eafc2764f, type: 3}
   m_Resource: {fileID: 8300000, guid: 06559e5cd322f1c40a0cd64eafc2764f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.02
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -5247,6 +5262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2121866047}
+  - component: {fileID: 2121866048}
   m_Layer: 5
   m_Name: SoundVolume
   m_TagString: Untagged
@@ -5275,6 +5291,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 120}
   m_SizeDelta: {x: -300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2121866048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121866046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c66f266e3ab054d95f7bf444d78410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 818712178}
+  volumeType: 0
 --- !u!1 &2126833962
 GameObject:
   m_ObjectHideFlags: 0
@@ -6915,8 +6945,8 @@ MonoBehaviour:
   title: {fileID: 643058416963609803}
   score: {fileID: 9001794308010366483}
   cancelButton: {fileID: 1856972884}
-  soundVolume: {fileID: 0}
-  musicVolume: {fileID: 0}
+  soundVolume: {fileID: 2121866048}
+  musicVolume: {fileID: 1522765517}
 --- !u!1 &7748647548601305542
 GameObject:
   m_ObjectHideFlags: 0

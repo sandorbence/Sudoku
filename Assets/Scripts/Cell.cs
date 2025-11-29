@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +20,9 @@ public class Cell : MonoBehaviour
     [SerializeField] private Color noteBackgroundColor;
     [SerializeField] private TextAlignmentOptions noteAlignment;
     [SerializeField] private int noteFontSize;
+    [Header("Sounds")]
+    [SerializeField] private AudioSource cellSelectSound;
+    [SerializeField] private AudioSource correctGuessSound;
 
     private TextMeshProUGUI display;
     private Button button;
@@ -41,7 +42,12 @@ public class Cell : MonoBehaviour
         this.button = GetComponent<Button>();
         this.CorrectNumber = number;
 
-        this.button.onClick.AddListener(() => GameManager.Instance.SelectActiveCell(this));
+        this.button.onClick.AddListener(() =>
+        {
+            GameManager.Instance.SelectActiveCell(this);
+            this.cellSelectSound.Play();
+        });
+
         this.DeselectActive();
     }
 
