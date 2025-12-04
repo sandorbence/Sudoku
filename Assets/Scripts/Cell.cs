@@ -30,10 +30,10 @@ public class Cell : MonoBehaviour
     private HashSet<short> notes = new HashSet<short>();
     private bool isActive = false;
 
-    public int CorrectNumber { get; private set; }
+    public short CorrectNumber { get; private set; }
     public bool Editable { get; private set; } = false;
 
-    public void SetCorrectNumber(int number)
+    public void SetCorrectNumber(short number)
     {
         this.display = GetComponentInChildren<TextMeshProUGUI>();
         this.defaultTextColor = this.display.color;
@@ -134,9 +134,9 @@ public class Cell : MonoBehaviour
     {
         this.Editable = true;
 
-        if (state.Guess != 0)
+        if (state.Number != 0)
         {
-            this.Guess(state.Guess);
+            this.Guess(state.Number);
             return;
         }
 
@@ -154,7 +154,7 @@ public class Cell : MonoBehaviour
     {
         return new CellState
         {
-            Guess = (notes.Count != 0 || this.display.text.Equals(string.Empty)) ?
+            Number = (notes.Count != 0 || this.display.text.Equals(string.Empty)) ?
             (short)0 : Convert.ToInt16(this.display.text),
             Notes = notes.Count == 0 ? null : new HashSet<short>(notes)
         };

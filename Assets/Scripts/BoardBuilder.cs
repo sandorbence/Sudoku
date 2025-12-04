@@ -8,12 +8,13 @@ public class BoardBuilder : Singleton<BoardBuilder>
     [SerializeField] private GameObject cellPrefab;
     [SerializeField] private float cellOffset;
 
+    private float startX => -4 * this.cellOffset;
+    private float startY => -4 * this.cellOffset;
+
     public void BuildBoard(Cell[,] filledBoard, int cellsToRemove)
     {
-        int[,] board = new int[9, 9];
+        short[,] board = new short[9, 9];
         System.Random random = new System.Random();
-        float startX = -4 * this.cellOffset;
-        float startY = -4 * this.cellOffset;
 
         this.FillBoardRandom(board, random);
 
@@ -23,8 +24,8 @@ public class BoardBuilder : Singleton<BoardBuilder>
             {
                 GameObject cellObj = Instantiate(this.cellPrefab, this.cellParent);
                 cellObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(
-                    startX + i * this.cellOffset,
-                    startY + j * this.cellOffset);
+                    this.startX + i * this.cellOffset,
+                    this.startY + j * this.cellOffset);
                 Cell cell = cellObj.GetComponent<Cell>();
                 cell.SetCorrectNumber(board[i, j]);
 
@@ -47,7 +48,44 @@ public class BoardBuilder : Singleton<BoardBuilder>
         }
     }
 
-    private bool FillBoardRandom(int[,] board, System.Random random)
+    public Cell[,] BuildBoardFromStartedGame(CellInfo[] cells)
+    {
+        Cell[,] board = new Cell[9, 9];
+
+        for (int i = 0; i < cells.Length; i++)
+        {
+            int row = i / 9;
+            int col = i % 9;
+            board[row, col] = new Cell();
+        }
+
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                CellInfo cellInfo = cells[i * 9 + j];
+
+                GameObject cellObj = Instantiate(this.cellPrefab, this.cellParent);
+                cellObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(
+                    this.startX + i * this.cellOffset,
+                    this.startY + j * this.cellOffset);
+                Cell cell = cellObj.GetComponent<Cell>();
+                cell.SetCorrectNumber(cellInfo.CorrectNumber);
+
+                if (!cellInfo.CorrectNumber.Equals(cellInfo.State.Number))
+                {
+                    cell.SetAsEditable();
+                    cell.SetCellState(cellInfo.State);
+                }
+
+                board[i, j] = cell;
+            }
+        }
+
+        return board;
+    }
+
+    private bool FillBoardRandom(short[,] board, System.Random random)
     {
         for (int row = 0; row < 9; row++)
         {
@@ -56,7 +94,7 @@ public class BoardBuilder : Singleton<BoardBuilder>
                 if (board[row, col] == 0)
                 {
                     List<int> nums = Enumerable.Range(1, 9).OrderBy(x => random.Next()).ToList();
-                    foreach (int num in nums)
+                    foreach (short num in nums)
                     {
                         if (IsValid(board, row, col, num))
                         {
@@ -76,7 +114,7 @@ public class BoardBuilder : Singleton<BoardBuilder>
         return true;
     }
 
-    private bool IsValid(int[,] board, int row, int col, int num)
+    private bool IsValid(short[,] board, int row, int col, int num)
     {
         // Row check
         for (int c = 0; c < 9; c++)
@@ -105,7 +143,7 @@ public class BoardBuilder : Singleton<BoardBuilder>
         return true;
     }
 
-    private void RemoveCells(int[,] board, int removeCount, System.Random random)
+    private void RemoveCells(short[,] board, int removeCount, System.Random random)
     {
         List<int> positions = Enumerable.Range(0, 81).OrderBy(x => random.Next()).ToList();
         int removed = 0;
@@ -116,10 +154,10 @@ public class BoardBuilder : Singleton<BoardBuilder>
             int row = idx / 9;
             int col = idx % 9;
 
-            int backup = board[row, col];
+            short backup = board[row, col];
             board[row, col] = 0;
 
-            int[,] clone = (int[,])board.Clone();
+            short[,] clone = (short[,])board.Clone();
             int solutionCount = CountSolutions(clone);
 
             if (solutionCount != 1)
@@ -133,14 +171,14 @@ public class BoardBuilder : Singleton<BoardBuilder>
         }
     }
 
-    private int CountSolutions(int[,] board, int limit = 2)
+    private int CountSolutions(short[,] board, int limit = 2)
     {
         int count = 0;
         this.SolveAndCount(board, ref count, limit);
         return count;
     }
 
-    private void SolveAndCount(int[,] board, ref int count, int limit)
+    private void SolveAndCount(short[,] board, ref int count, int limit)
     {
         if (count >= limit) return;
 
@@ -150,7 +188,7 @@ public class BoardBuilder : Singleton<BoardBuilder>
             {
                 if (board[row, col] == 0)
                 {
-                    for (int num = 1; num <= 9; num++)
+                    for (short num = 1; num <= 9; num++)
                     {
                         if (this.IsValid(board, row, col, num))
                         {

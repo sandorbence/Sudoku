@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
+[Serializable]
 public class CellState
 {
-    public short Guess { get; set; }
+    public short Number { get; set; }
     public HashSet<short> Notes { get; set; }
 }

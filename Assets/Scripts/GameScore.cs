@@ -1,5 +1,4 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 public class GameScore : MonoBehaviour
@@ -8,13 +7,9 @@ public class GameScore : MonoBehaviour
     private const short StartingPoints = 1000;
     private const short MistakeDecrement = 25;
 
-    private void Start()
-    {
-        this.display = GetComponent<TextMeshProUGUI>();
-    }
-
     public short Calculate(float completionTime, short mistakes)
     {
+        this.display = GetComponent<TextMeshProUGUI>();
         short score = (short)(StartingPoints - completionTime - mistakes * MistakeDecrement);
         this.display.text = $"Score: {score.ToString()}";
 

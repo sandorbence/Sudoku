@@ -8,7 +8,8 @@ public class AudioManager : Singleton<AudioManager>
 
     public void ChangeVolume(float value, VolumeType volumeType)
     {
-        string volume = volumeType.Equals(VolumeType.Sound) ? "SoundVolume" : "MusicVolume";
+        bool isSoundVolume = volumeType.Equals(VolumeType.Sound);
+        string volume = isSoundVolume ? "SoundVolume" : "MusicVolume";
 
         if (value <= 0.0001f)
         {
@@ -17,5 +18,8 @@ public class AudioManager : Singleton<AudioManager>
         }
 
         this.audioMixer.SetFloat(volume, Mathf.Log10(value) * 20);
+
+        SaveManager.Data.SetVolume(volumeType, value);
+        SaveManager.Save();
     }
 }

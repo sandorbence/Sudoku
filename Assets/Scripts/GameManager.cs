@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
     private bool isInNoteMode = false;
     private static List<NumberInput> numberInputs = new List<NumberInput>();
     private Stack<PlayerAction> playerActions = new Stack<PlayerAction>();
+    private HighScoreData highScoreData;
 
     public Difficulty Difficulty { get; private set; }
 
@@ -37,10 +38,11 @@ public class GameManager : Singleton<GameManager>
         DifficultyChooser.Instance.Show();
     }
 
-    public void StartGame(Difficulty diff)
+    public void StartNewGame(Difficulty diff)
     {
         this.Difficulty = diff;
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
+        SaveManager.Data.GameState = null;
 
         if (PauseMenuDisplay.Instance != null)
         {
@@ -48,10 +50,26 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    public void ContinueGame()
+    {
+        this.Difficulty = SaveManager.Data.GameState.Difficulty;
+        SceneManager.LoadScene("Game", LoadSceneMode.Single);
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
         if (scene.name == "Game")
         {
+            SaveManager.Data.HighScores.TryGetValue(this.Difficulty, out HighScoreData data);
+            BestTimeDisplay.Instance.Set(data.Time);
+
+            if (SaveManager.Data.GameState != null)
+            {
+                this.filledBoard = BoardBuilder.Instance.BuildBoardFromStartedGame(SaveManager.Data.GameState.Cells);
+                Timer.Instance.Set(SaveManager.Data.GameState.Time);
+                return;
+            }
+
             int cellsToRemove = this.Difficulty switch
             {
                 Difficulty.Easy => 40,
@@ -62,6 +80,12 @@ public class GameManager : Singleton<GameManager>
 
             this.filledBoard = new Cell[9, 9];
             BoardBuilder.Instance.BuildBoard(this.filledBoard, cellsToRemove);
+            SaveManager.Data.GameState = new GameState
+            {
+                Difficulty = this.Difficulty,
+                Mistakes = 0,
+                Cells = GetCellStatesFromBoard(this.filledBoard)
+            };
         }
     }
 
@@ -77,11 +101,15 @@ public class GameManager : Singleton<GameManager>
 
         if (!this.activeCell.Guess(number))
         {
-            MistakesDisplay.Instance.IncrementMistakes();
+            SaveManager.Data.GameState.Mistakes++;
+            SaveManager.Save();
             return;
         }
 
-        if (this.CheckForWin()) this.SetGameOver();
+        if (this.CheckForWin())
+        {
+            this.SetGameOver();
+        }
     }
 
     public void Undo()
@@ -125,6 +153,29 @@ public class GameManager : Singleton<GameManager>
     private void SetGameOver()
     {
         PauseMenuDisplay.Instance.Show(gameEnded: true);
+
+        SaveManager.Data.GameState = null;
+
+        if (!SaveManager.Data.HighScores.TryGetValue(this.Difficulty, out HighScoreData currentHighScore))
+        {
+            SaveManager.Data.HighScores[this.Difficulty] = this.highScoreData;
+            SaveManager.Save();
+            return;
+        }
+
+        if (this.highScoreData.Score > currentHighScore.Score)
+        {
+            Debug.Log("New high score!");
+            SaveManager.Data.HighScores[this.Difficulty].Score = this.highScoreData.Score;
+        }
+
+        if ((int)this.highScoreData.Time < (int)currentHighScore.Time)
+        {
+            Debug.Log("New best time!");
+            SaveManager.Data.HighScores[this.Difficulty].Time = this.highScoreData.Time;
+        }
+
+        SaveManager.Save();
     }
 
     public void ToggleNoteMode()
@@ -145,4 +196,17 @@ public class GameManager : Singleton<GameManager>
         PauseMenuDisplay.Instance.Hide();
         Time.timeScale = 1f;
     }
+
+    public void SetScoreAndTime(short score, float time)
+    {
+        this.highScoreData = new HighScoreData { Score = score, Time = time };
+    }
+
+    private static CellInfo[] GetCellStatesFromBoard(Cell[,] board) => board.Cast<Cell>()
+        .Select(x => new CellInfo
+        {
+            State = x.GetCurrentState(),
+            CorrectNumber = x.CorrectNumber
+        })
+        .ToArray();
 }

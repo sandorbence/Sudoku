@@ -20,6 +20,7 @@ public class SaveManager
 
     public static void Save()
     {
+        Data.GameState.Time = Timer.Instance.Get();
         string json = JsonConvert.SerializeObject(Data, Formatting.Indented);
         //string encrypted = EncryptionUtility.Encrypt(json);
         File.WriteAllText(savePath, json);

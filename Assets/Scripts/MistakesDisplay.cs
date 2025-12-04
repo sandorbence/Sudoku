@@ -1,19 +1,20 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
-public class MistakesDisplay : Singleton<MistakesDisplay>
+public class MistakesDisplay : MonoBehaviour
 {
     private TextMeshProUGUI display;
-    public short Mistakes { get; private set; } = 0;
 
     private void Start()
     {
         this.display = GetComponent<TextMeshProUGUI>();
+        SaveManager.DataChanged += this.OnSaveManagerDataChanged;
+        this.OnSaveManagerDataChanged(this, EventArgs.Empty);
     }
 
-    public void IncrementMistakes()
+    private void OnSaveManagerDataChanged(object sender, EventArgs e)
     {
-        this.Mistakes++;
-        this.display.text = $"Mistakes: {this.Mistakes.ToString()}";
+        this.display.text = $"Mistakes: {SaveManager.Data.GameState.Mistakes.ToString()}";
     }
 }

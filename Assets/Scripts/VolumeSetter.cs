@@ -8,6 +8,7 @@ public class VolumeSetter : MonoBehaviour
 
     private void Start()
     {
+        this.slider.value = SaveManager.Data.GetVolume(this.volumeType);
         this.slider = GetComponentInChildren<Slider>();
         AudioManager.Instance.ChangeVolume(this.slider.value, this.volumeType);
         this.slider.onValueChanged.AddListener(value
