@@ -61,7 +61,7 @@ public class GameManager : Singleton<GameManager>
         if (scene.name == "Game")
         {
             SaveManager.Data.HighScores.TryGetValue(this.Difficulty, out HighScoreData data);
-            BestTimeDisplay.Instance.Set(data.Time);
+            BestTimeDisplay.Instance.Set(data?.Time);
 
             if (SaveManager.Data.GameState != null)
             {
