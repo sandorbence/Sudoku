@@ -14,6 +14,7 @@ public class GameManager : Singleton<GameManager>
     private HighScoreData highScoreData;
 
     public Difficulty Difficulty { get; private set; }
+    public bool GameEnded = false;
 
     private void Start()
     {
@@ -44,10 +45,7 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
         SaveManager.Data.GameState = null;
 
-        if (PauseMenuDisplay.Instance != null)
-        {
-            PauseMenuDisplay.Instance.Hide();
-        }
+        Settings.Instance.Hide();
     }
 
     public void ContinueGame()
@@ -84,7 +82,7 @@ public class GameManager : Singleton<GameManager>
             {
                 Difficulty = this.Difficulty,
                 Mistakes = 0,
-                Cells = GetCellStatesFromBoard(this.filledBoard)
+                Cells = this.GetCellStatesFromBoard()
             };
         }
     }
@@ -152,7 +150,8 @@ public class GameManager : Singleton<GameManager>
 
     private void SetGameOver()
     {
-        PauseMenuDisplay.Instance.Show(gameEnded: true);
+        this.GameEnded = true;
+        Settings.Instance.Show();
 
         SaveManager.Data.GameState = null;
 
@@ -188,12 +187,12 @@ public class GameManager : Singleton<GameManager>
     public void ShowInGameSettings()
     {
         Time.timeScale = 0f;
-        PauseMenuDisplay.Instance.Show(gameEnded: false);
+        Settings.Instance.Show();
     }
 
     public void ResumeGame()
     {
-        PauseMenuDisplay.Instance.Hide();
+        Settings.Instance.Hide();
         Time.timeScale = 1f;
     }
 
@@ -201,6 +200,8 @@ public class GameManager : Singleton<GameManager>
     {
         this.highScoreData = new HighScoreData { Score = score, Time = time };
     }
+
+    public CellInfo[] GetCellStatesFromBoard() => GetCellStatesFromBoard(this.filledBoard);
 
     private static CellInfo[] GetCellStatesFromBoard(Cell[,] board) => board.Cast<Cell>()
         .Select(x => new CellInfo

@@ -20,7 +20,13 @@ public class SaveManager
 
     public static void Save()
     {
-        Data.GameState.Time = Timer.Instance.Get();
+        // Means we are in game
+        if (Timer.Instance != null)
+        {
+            Data.GameState.Time = Timer.Instance.Get();
+            Data.GameState.Cells = GameManager.Instance.GetCellStatesFromBoard();
+        }
+
         string json = JsonConvert.SerializeObject(Data, Formatting.Indented);
         //string encrypted = EncryptionUtility.Encrypt(json);
         File.WriteAllText(savePath, json);

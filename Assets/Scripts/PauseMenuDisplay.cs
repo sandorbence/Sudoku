@@ -1,23 +1,24 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class PauseMenuDisplay : Singleton<PauseMenuDisplay>
+public class PauseMenuDisplay : Settings
 {
     [SerializeField] private PauseMenuTitle title;
     [SerializeField] private GameScore score;
     [SerializeField] private GameTime time;
-    [SerializeField] private Button cancelButton;
     [SerializeField] private VolumeSetter soundVolume;
     [SerializeField] private VolumeSetter musicVolume;
 
     private void Start()
     {
-        this.gameObject.SetActive(false);
+        this.Hide();
         this.cancelButton.onClick.AddListener(() => GameManager.Instance.ResumeGame());
     }
 
-    public void Show(bool gameEnded)
+    public override void Show()
     {
+        bool gameEnded = GameManager.Instance.GameEnded;
+
         if (gameEnded)
         {
             float completionTime = Timer.Instance.Get();
@@ -32,10 +33,5 @@ public class PauseMenuDisplay : Singleton<PauseMenuDisplay>
         this.soundVolume.SetVisibility(!gameEnded);
         this.musicVolume.SetVisibility(!gameEnded);
         this.gameObject.SetActive(true);
-    }
-
-    public void Hide()
-    {
-        this.gameObject.SetActive(false);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class InGameSettings : MonoBehaviour
+public class SettingsButton : MonoBehaviour
 {
     private Button button;
 
