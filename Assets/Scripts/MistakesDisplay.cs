@@ -15,6 +15,6 @@ public class MistakesDisplay : MonoBehaviour
 
     private void OnSaveManagerDataChanged(object sender, EventArgs e)
     {
-        this.display.text = $"Mistakes: {SaveManager.Data.GameState.Mistakes.ToString()}";
+        this.display.text = SaveManager.Data.GameState.Mistakes.ToString();
     }
 }
