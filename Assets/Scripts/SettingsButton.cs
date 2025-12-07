@@ -1,13 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-
-public class SettingsButton : MonoBehaviour
+﻿public class SettingsButton : ToggleButton
 {
-    private Button button;
-
-    private void Start()
+    protected override void Start()
     {
-        this.button = GetComponent<Button>();
+        base.Start();
         this.button.onClick.AddListener(() =>
         GameManager.Instance.ShowInGameSettings());
     }

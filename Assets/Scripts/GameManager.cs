@@ -71,7 +71,7 @@ public class GameManager : Singleton<GameManager>
             int cellsToRemove = this.Difficulty switch
             {
                 Difficulty.Easy => 40,
-                Difficulty.Medium => 45,
+                Difficulty.Normal => 45,
                 Difficulty.Hard => 50,
                 _ => throw new Exception("Not a valid difficulty")
             };
@@ -192,7 +192,6 @@ public class GameManager : Singleton<GameManager>
 
     public void ResumeGame()
     {
-        Settings.Instance.Hide();
         Time.timeScale = 1f;
     }
 

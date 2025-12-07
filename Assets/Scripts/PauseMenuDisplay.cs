@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class PauseMenuDisplay : Settings
 {
@@ -9,9 +8,9 @@ public class PauseMenuDisplay : Settings
     [SerializeField] private VolumeSetter soundVolume;
     [SerializeField] private VolumeSetter musicVolume;
 
-    private void Start()
+    protected override void Start()
     {
-        this.Hide();
+        base.Start();
         this.cancelButton.onClick.AddListener(() => GameManager.Instance.ResumeGame());
     }
 

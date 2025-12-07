@@ -13,7 +13,7 @@ public class DifficultyChooser : Singleton<DifficultyChooser>
         this.gameObject.SetActive(false);
 
         this.easyButton.onClick.AddListener(() => GameManager.Instance.StartNewGame(Difficulty.Easy));
-        this.mediumButton.onClick.AddListener(() => GameManager.Instance.StartNewGame(Difficulty.Medium));
+        this.mediumButton.onClick.AddListener(() => GameManager.Instance.StartNewGame(Difficulty.Normal));
         this.hardButton.onClick.AddListener(() => GameManager.Instance.StartNewGame(Difficulty.Hard));
         this.cancelButton.onClick.AddListener(() => this.Hide());
     }

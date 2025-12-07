@@ -2310,10 +2310,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4204556033388475433, guid: e0d694ace63aefe448849748e344c4e4, type: 3}
-      propertyPath: m_fontStyle
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 5709542211785395731, guid: e0d694ace63aefe448849748e344c4e4, type: 3}
+      propertyPath: cancelButton
+      value: 
+      objectReference: {fileID: 1457525387}
     - target: {fileID: 8686374169305776693, guid: e0d694ace63aefe448849748e344c4e4, type: 3}
       propertyPath: m_Name
       value: DifficultyChooser
@@ -2328,6 +2328,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1697586793543961757, guid: e0d694ace63aefe448849748e344c4e4, type: 3}
   m_PrefabInstance: {fileID: 1457525385}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1457525387 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5533115394531604185, guid: e0d694ace63aefe448849748e344c4e4, type: 3}
+  m_PrefabInstance: {fileID: 1457525385}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1472985225
 GameObject:
   m_ObjectHideFlags: 0
@@ -4772,10 +4783,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2167e60cb5c864fa5c9cae00dd50d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cancelButton: {fileID: 7405351852402497592}
   title: {fileID: 6050838409126687939}
   score: {fileID: 6990853279873397016}
   time: {fileID: 7749170492336853676}
-  cancelButton: {fileID: 7405351852402497592}
   soundVolume: {fileID: 132662623983105064}
   musicVolume: {fileID: 6514068285715937589}
 --- !u!114 &2396057806439890624
