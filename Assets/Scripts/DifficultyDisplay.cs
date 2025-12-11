@@ -1,13 +1,13 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class DifficultyDisplay : MonoBehaviour
 {
-    private TextMeshProUGUI text;
+    private Text text;
 
     private void Start()
     {
-        this.text = GetComponent<TextMeshProUGUI>();
+        this.text = GetComponent<Text>();
         this.text.text = GameManager.Instance.Difficulty.ToString();
     }
 }

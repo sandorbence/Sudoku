@@ -8,7 +8,7 @@ public class ContinueGame : MonoBehaviour
     private void Start()
     {
         this.button = GetComponent<Button>();
-        this.button.gameObject.SetActive(SaveManager.Data.GameState != null);
+        this.button.interactable = SaveManager.Data.GameState != null;
         this.button.onClick.AddListener(() => GameManager.Instance.ContinueGame());
     }
 }

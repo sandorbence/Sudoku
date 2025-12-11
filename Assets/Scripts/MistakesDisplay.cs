@@ -1,14 +1,14 @@
 ﻿using System;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MistakesDisplay : MonoBehaviour
 {
-    private TextMeshProUGUI display;
+    private Text display;
 
     private void Start()
     {
-        this.display = GetComponent<TextMeshProUGUI>();
+        this.display = GetComponent<Text>();
         SaveManager.DataChanged += this.OnSaveManagerDataChanged;
         this.OnSaveManagerDataChanged(this, EventArgs.Empty);
     }

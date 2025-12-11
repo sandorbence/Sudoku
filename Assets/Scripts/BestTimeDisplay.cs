@@ -1,13 +1,13 @@
 ﻿using System;
-using TMPro;
+using UnityEngine.UI;
 
 public class BestTimeDisplay : Singleton<BestTimeDisplay>
 {
-    private TextMeshProUGUI display;
+    private Text display;
 
     public void Set(float? time)
     {
-        this.display = GetComponent<TextMeshProUGUI>();
+        this.display = GetComponent<Text>();
 
         if (time != null)
         {

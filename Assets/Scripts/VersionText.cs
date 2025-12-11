@@ -1,13 +1,13 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class VersionText : MonoBehaviour
 {
-    private TextMeshProUGUI display;
+    private Text display;
 
     private void Start()
     {
-        this.display = GetComponent<TextMeshProUGUI>();
+        this.display = GetComponent<Text>();
         this.display.text = $"v{Application.version}";
     }
 }

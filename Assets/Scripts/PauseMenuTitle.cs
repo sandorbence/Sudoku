@@ -1,17 +1,13 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenuTitle : MonoBehaviour
 {
-    private TextMeshProUGUI title;
-
-    private void Start()
-    {
-        this.title = GetComponent<TextMeshProUGUI>();
-    }
+    private Text title;
 
     public void Set(string title)
     {
+        this.title = GetComponent<Text>();
         this.title.text = title;
     }
 }

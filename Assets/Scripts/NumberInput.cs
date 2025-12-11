@@ -1,5 +1,4 @@
 ﻿using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,13 +7,13 @@ public class NumberInput : MonoBehaviour
     [SerializeField] private Color activeBackgroundColor;
     private Color defaultBackgroundColor;
     private Button button;
-    private TextMeshProUGUI text;
+    private Text text;
     private Image background;
 
     private void Start()
     {
         this.button = GetComponent<Button>();
-        this.text = GetComponentInChildren<TextMeshProUGUI>();
+        this.text = GetComponentInChildren<Text>();
         this.background = GetComponent<Image>();
         this.defaultBackgroundColor = this.background.color;
         this.button.onClick.AddListener(()

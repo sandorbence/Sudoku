@@ -1,13 +1,13 @@
 ﻿using System;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HighScoreTab : MonoBehaviour
 {
     [SerializeField] private Difficulty difficulty;
-    [SerializeField] private TextMeshProUGUI title;
-    [SerializeField] private TextMeshProUGUI time;
-    [SerializeField] private TextMeshProUGUI score;
+    [SerializeField] private Text title;
+    [SerializeField] private Text time;
+    [SerializeField] private Text score;
 
     private void Start()
     {
@@ -19,7 +19,9 @@ public class HighScoreTab : MonoBehaviour
             if (!data.Time.Equals(0f))
             {
                 TimeSpan timeSpan = TimeSpan.FromSeconds(data.Time);
-                this.time.text = timeSpan.ToString(@"hh\:mm\:ss");
+                this.time.text = timeSpan.Hours > 0
+                    ? timeSpan.ToString(@"hh\:mm\:ss")
+                    : timeSpan.ToString(@"mm\:ss");
             }
 
             if (!data.Score.Equals(0))

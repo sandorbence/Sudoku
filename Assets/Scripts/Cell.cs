@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +9,7 @@ public class Cell : MonoBehaviour
     [Header("Normal display")]
     [SerializeField] private Color activeBackgroundColor;
     [SerializeField] private Color defaultBackgroundColor;
-    [SerializeField] private TextAlignmentOptions defaultAlignment;
+    [SerializeField] private TextAnchor defaultAlignment;
     [SerializeField] private int defaultFontSize;
     [SerializeField] private Image background;
     [Header("Incorrect display")]
@@ -18,13 +17,13 @@ public class Cell : MonoBehaviour
     [Header("Note display")]
     [SerializeField] private Color noteTextColor;
     [SerializeField] private Color noteBackgroundColor;
-    [SerializeField] private TextAlignmentOptions noteAlignment;
+    [SerializeField] private TextAnchor noteAlignment;
     [SerializeField] private int noteFontSize;
     [Header("Sounds")]
     [SerializeField] private AudioSource cellSelectSound;
     [SerializeField] private AudioSource correctGuessSound;
 
-    private TextMeshProUGUI display;
+    private Text display;
     private Button button;
     private Color defaultTextColor;
     private HashSet<short> notes = new HashSet<short>();
@@ -35,7 +34,7 @@ public class Cell : MonoBehaviour
 
     public void SetCorrectNumber(short number)
     {
-        this.display = GetComponentInChildren<TextMeshProUGUI>();
+        this.display = GetComponentInChildren<Text>();
         this.defaultTextColor = this.display.color;
         this.ChangeDisplayMode(defaultDisplay: true);
         this.display.text = number.ToString();

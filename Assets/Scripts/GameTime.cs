@@ -1,10 +1,10 @@
 ﻿using System;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameTime : MonoBehaviour
 {
-    private TextMeshProUGUI display;
+    private Text display;
 
     public void SetVisibility(bool enabled)
     {
@@ -13,8 +13,8 @@ public class GameTime : MonoBehaviour
 
     public void SetTime(float completionTime)
     {
-        this.display = GetComponent<TextMeshProUGUI>();
+        this.display = GetComponent<Text>();
         TimeSpan time = TimeSpan.FromSeconds(completionTime);
-        this.display.text = $"Time: {time.ToString(@"hh\:mm\:ss")}";
+        this.display.text = time.ToString(@"hh\:mm\:ss");
     }
 }

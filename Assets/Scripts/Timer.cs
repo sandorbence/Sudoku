@@ -1,15 +1,15 @@
 ﻿using System;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Timer : Singleton<Timer>
 {
-    private TextMeshProUGUI display;
+    private Text display;
     private float elapsedTime = 0f;
 
     private void Start()
     {
-        this.display = GetComponent<TextMeshProUGUI>();
+        this.display = GetComponent<Text>();
     }
 
     private void Update()
