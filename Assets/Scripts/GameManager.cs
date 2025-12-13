@@ -203,10 +203,20 @@ public class GameManager : Singleton<GameManager>
     public CellInfo[] GetCellStatesFromBoard() => GetCellStatesFromBoard(this.filledBoard);
 
     private static CellInfo[] GetCellStatesFromBoard(Cell[,] board) => board.Cast<Cell>()
-        .Select(x => new CellInfo
+        .Select(x =>
         {
-            State = x.GetCurrentState(),
-            CorrectNumber = x.CorrectNumber
+            CellState cellState = x.GetCurrentState();
+
+            if (!cellState.Number.Equals(x.CorrectNumber) && !cellState.Number.Equals(0))
+            {
+                cellState.Number = 0;
+            }
+
+            return new CellInfo
+            {
+                State = cellState,
+                CorrectNumber = x.CorrectNumber
+            };
         })
         .ToArray();
 }
