@@ -13,6 +13,7 @@ public class ClosableWindow : MonoBehaviour
 
     public virtual void Show()
     {
+        GameManager.Instance.SetActivePopup(this);
         this.gameObject.SetActive(true);
     }
 

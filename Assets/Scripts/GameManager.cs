@@ -12,6 +12,7 @@ public class GameManager : Singleton<GameManager>
     private static List<NumberInput> numberInputs = new List<NumberInput>();
     private Stack<PlayerAction> playerActions = new Stack<PlayerAction>();
     private HighScoreData highScoreData;
+    private ClosableWindow activePopup = null;
 
     public Difficulty Difficulty { get; private set; }
     public bool GameEnded = false;
@@ -32,11 +33,6 @@ public class GameManager : Singleton<GameManager>
 
         this.activeCell = cell;
         this.activeCell.SetAsActive();
-    }
-
-    public void ShowDifficultyChooser()
-    {
-        DifficultyChooser.Instance.Show();
     }
 
     public void StartNewGame(Difficulty diff)
@@ -188,6 +184,7 @@ public class GameManager : Singleton<GameManager>
     {
         Time.timeScale = 0f;
         Settings.Instance.Show();
+        this.SetActivePopup(Settings.Instance);
     }
 
     public void ResumeGame()
@@ -219,4 +216,21 @@ public class GameManager : Singleton<GameManager>
             };
         })
         .ToArray();
+
+    public void ClosePopup()
+    {
+        if (this.activePopup is not null)
+        {
+            this.activePopup.Hide();
+        }
+
+        this.activePopup = null;
+        ClickBlocker.Instance.Deactivate();
+    }
+
+    public void SetActivePopup(ClosableWindow closableWindow)
+    {
+        ClickBlocker.Instance.Activate();
+        this.activePopup = closableWindow;
+    }
 }
