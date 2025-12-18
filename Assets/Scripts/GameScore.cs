@@ -15,9 +15,4 @@ public class GameScore : MonoBehaviour
 
         return score;
     }
-
-    public void SetVisibility(bool enabled)
-    {
-        this.gameObject.SetActive(enabled);
-    }
 }

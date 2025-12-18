@@ -8,6 +8,7 @@ public class ClickBlocker : Singleton<ClickBlocker>
     {
         this.button = GetComponent<Button>();
         this.button.onClick.AddListener(() => GameManager.Instance.ClosePopup());
+        this.Deactivate();
     }
 
     public override void OnDestroy()

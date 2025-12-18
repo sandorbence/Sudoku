@@ -134,6 +134,7 @@ public class GameManager : Singleton<GameManager>
     public void BackToMain()
     {
         this.ClearInputs();
+        SaveManager.Save();
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
