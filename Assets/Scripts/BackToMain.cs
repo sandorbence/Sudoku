@@ -8,7 +8,7 @@ public class BackToMain : MonoBehaviour
     private void Start()
     {
         this.button = GetComponent<Button>();
-        this.button.onClick.AddListener(() => GameManager.Instance.BackToMain());
+        this.button.onClick.AddListener(GameManager.Instance.BackToMain);
     }
 
     public void OnDestroy()

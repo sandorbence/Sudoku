@@ -4,8 +4,9 @@ public class ClickBlocker : Singleton<ClickBlocker>
 {
     private Button button;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         this.button = GetComponent<Button>();
         this.button.onClick.AddListener(() => GameManager.Instance.ClosePopups());
         this.Deactivate();

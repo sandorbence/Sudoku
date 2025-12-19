@@ -21,7 +21,6 @@ public class GameManager : Singleton<GameManager>
     {
         DontDestroyOnLoad(this.gameObject);
         SceneManager.sceneLoaded += this.OnSceneLoaded;
-        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
     public void SelectActiveCell(Cell cell)
@@ -38,6 +37,7 @@ public class GameManager : Singleton<GameManager>
     public void StartNewGame(Difficulty diff)
     {
         this.Difficulty = diff;
+        this.ClosePopups();
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
         SaveManager.Data.GameState = null;
 
@@ -134,6 +134,7 @@ public class GameManager : Singleton<GameManager>
     public void BackToMain()
     {
         this.ClearInputs();
+        this.ClosePopups();
         SaveManager.Save();
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
