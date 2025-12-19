@@ -12,7 +12,7 @@ public class GameManager : Singleton<GameManager>
     private static List<NumberInput> numberInputs = new List<NumberInput>();
     private Stack<PlayerAction> playerActions = new Stack<PlayerAction>();
     private HighScoreData highScoreData;
-    private ClosableWindow activePopup = null;
+    private List<ClosableWindow> activePopups = new List<ClosableWindow>();
 
     public Difficulty Difficulty { get; private set; }
     public bool GameEnded = false;
@@ -218,20 +218,20 @@ public class GameManager : Singleton<GameManager>
         })
         .ToArray();
 
-    public void ClosePopup()
+    public void ClosePopups()
     {
-        if (this.activePopup is not null)
+        foreach (ClosableWindow cw in this.activePopups)
         {
-            this.activePopup.Hide();
+            cw.Hide();
         }
 
-        this.activePopup = null;
+        this.activePopups.Clear();
         ClickBlocker.Instance.Deactivate();
     }
 
     public void SetActivePopup(ClosableWindow closableWindow)
     {
         ClickBlocker.Instance.Activate();
-        this.activePopup = closableWindow;
+        this.activePopups.Add(closableWindow);
     }
 }

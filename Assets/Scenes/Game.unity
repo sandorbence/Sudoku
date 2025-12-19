@@ -5318,6 +5318,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6097727978921501174, guid: e0d694ace63aefe448849748e344c4e4, type: 3}
   m_PrefabInstance: {fileID: 1624433301}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1624433303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7750792099936957491, guid: e0d694ace63aefe448849748e344c4e4, type: 3}
+  m_PrefabInstance: {fileID: 1624433301}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5537820f32a0dbc438ebb86c55cff923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1625350531 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4953184393717241658, guid: ba92acb7a34a0344ca4236645f731744, type: 3}
@@ -5826,13 +5837,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6620059749997749689, guid: 17acf85f4d3c09746b1610a69642e868, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1797862209}
   m_SourcePrefab: {fileID: 100100000, guid: 17acf85f4d3c09746b1610a69642e868, type: 3}
 --- !u!224 &1797862207 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4557347308330683916, guid: 17acf85f4d3c09746b1610a69642e868, type: 3}
   m_PrefabInstance: {fileID: 1797862206}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1797862208 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6620059749997749689, guid: 17acf85f4d3c09746b1610a69642e868, type: 3}
+  m_PrefabInstance: {fileID: 1797862206}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1797862209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797862208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbc76466c0e6fd643b12dab086ffdc88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windowToToggle: {fileID: 1624433303}
 --- !u!224 &1802570668 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3616324433323342797, guid: d14d6f80f7408b148a42da4ffd26eb03, type: 3}
