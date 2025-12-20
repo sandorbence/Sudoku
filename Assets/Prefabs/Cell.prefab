@@ -136,7 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f817ada8cc29def4a8bd2fa5ecc7badc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeBackgroundColor: {r: 0.2687344, g: 0.7453182, b: 0.9339623, a: 0.47058824}
   defaultBackgroundColor: {r: 1, g: 1, b: 1, a: 0}
   defaultAlignment: 4
   defaultFontSize: 70
@@ -353,6 +352,7 @@ GameObject:
   - component: {fileID: 1407226756573010000}
   - component: {fileID: 3807297183469873612}
   - component: {fileID: 8217882263733107767}
+  - component: {fileID: 7022164273894123016}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -421,3 +421,16 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 1
+--- !u!114 &7022164273894123016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6193508799497052020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorName: 2

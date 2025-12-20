@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 0
+  isActiveElement: 0
 --- !u!114 &65884589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1108,6 +1109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 2
+  isActiveElement: 0
 --- !u!1 &519365895
 GameObject:
   m_ObjectHideFlags: 0
@@ -1825,6 +1827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 2
+  isActiveElement: 0
 --- !u!1001 &715482360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2051,6 +2054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 2
+  isActiveElement: 0
 --- !u!1 &841242057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2159,6 +2163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 2
+  isActiveElement: 0
 --- !u!1 &850970600
 GameObject:
   m_ObjectHideFlags: 0
@@ -2337,6 +2342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 2
+  isActiveElement: 0
 --- !u!224 &909273419 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7669132734566607443, guid: 5dd7bce4915550e428251a32dea0144a, type: 3}
@@ -4779,6 +4785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 2
+  isActiveElement: 0
 --- !u!224 &1640162280 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2454086144129197296, guid: 4e0c0d01398ee87429ba015bacb7e1e0, type: 3}
@@ -4873,6 +4880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 0
+  isActiveElement: 0
 --- !u!1001 &1675998625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5105,6 +5113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 2
+  isActiveElement: 0
 --- !u!1001 &1797862206
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5720,6 +5729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 2
+  isActiveElement: 0
 --- !u!1 &1923065151
 GameObject:
   m_ObjectHideFlags: 0
@@ -5937,6 +5947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 2
+  isActiveElement: 0
 --- !u!224 &1946582559 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8746127697709875655, guid: 94e59324282d7b94b8dc3a10b0a9b0fd, type: 3}
@@ -6218,6 +6229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 2
+  isActiveElement: 0
 --- !u!1 &2089571578
 GameObject:
   m_ObjectHideFlags: 0
@@ -6307,6 +6319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 1
+  isActiveElement: 0
 --- !u!1 &2094704960
 GameObject:
   m_ObjectHideFlags: 0
@@ -6769,6 +6782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 0
+  isActiveElement: 1
 --- !u!1001 &600673877963402935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6886,7 +6900,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorName: 2
+  colorName: 0
+  isActiveElement: 1
 --- !u!224 &966291033603211402
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7277,6 +7292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 2
+  isActiveElement: 0
 --- !u!1001 &5265148500248592579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7395,6 +7411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 0
+  isActiveElement: 1
 --- !u!1001 &5789533055744974456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7740,6 +7757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 2
+  isActiveElement: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

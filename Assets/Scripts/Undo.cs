@@ -8,6 +8,6 @@ public class Undo : MonoBehaviour
     private void Start()
     {
         this.button = GetComponent<Button>();
-        this.button.onClick.AddListener(() => GameManager.Instance.Undo());
+        this.button.onClick.AddListener(GameManager.Instance.Undo);
     }
 }

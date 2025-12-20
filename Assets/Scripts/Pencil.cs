@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Pencil : Singleton<Pencil>
 {
-    [SerializeField] private Color activeBackgroundColor;
+    private Color activeBackgroundColor;
     private Color defaultBackgroundColor;
     private Button button;
     private Image background;
@@ -13,6 +13,8 @@ public class Pencil : Singleton<Pencil>
         this.button = GetComponent<Button>();
         this.background = GetComponent<Image>();
         this.defaultBackgroundColor = this.background.color;
+        this.activeBackgroundColor = this.background.color;
+        this.activeBackgroundColor.a = Constants.ActiveAlpha;
         this.button.onClick.AddListener(() => GameManager.Instance.ToggleNoteMode());
     }
 

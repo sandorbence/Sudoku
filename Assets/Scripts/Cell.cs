@@ -23,7 +23,7 @@ public class Cell : MonoBehaviour
     [SerializeField] private AudioSource cellSelectSound;
     [SerializeField] private AudioSource correctGuessSound;
 
-    private Color activeBackgroundColor = ThemeManager.CurrentTheme.GetColorByName(ThemeColorName.Tertiary);
+    private Color activeBackgroundColor;
     private Text display;
     private Button button;
     private Color defaultTextColor;
@@ -35,8 +35,7 @@ public class Cell : MonoBehaviour
 
     public void SetCorrectNumber(short number)
     {
-        this.display = GetComponentInChildren<Text>();
-        this.defaultTextColor = this.display.color;
+        this.Setup();
         this.ChangeDisplayMode(defaultDisplay: true);
         this.display.text = number.ToString();
         this.button = GetComponent<Button>();
@@ -49,6 +48,14 @@ public class Cell : MonoBehaviour
         });
 
         this.DeselectActive();
+    }
+
+    private void Setup()
+    {
+        this.display = GetComponentInChildren<Text>();
+        this.defaultTextColor = this.display.color;
+        this.activeBackgroundColor = ThemeManager.CurrentTheme.GetColorByName(ThemeColorName.Tertiary);
+        this.activeBackgroundColor.a = Constants.ActiveAlpha;
     }
 
     public void SetAsEditable()
@@ -140,6 +147,7 @@ public class Cell : MonoBehaviour
             return;
         }
 
+        this.ChangeDisplayMode(defaultDisplay: true);
         this.ClearCell();
 
         if (state.Notes != null)

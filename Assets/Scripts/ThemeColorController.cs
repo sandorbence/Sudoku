@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ThemeColorController : MonoBehaviour
 {
     [SerializeField] private ThemeColorName colorName;
+    [SerializeField] private bool isActiveElement = false;
     private Image image;
     private Text text;
 
@@ -30,6 +31,11 @@ public class ThemeColorController : MonoBehaviour
         if (ThemeManager.CurrentTheme == null) return;
 
         Color color = ThemeManager.CurrentTheme.GetColorByName(this.colorName);
+
+        if (this.isActiveElement)
+        {
+            color.a = Constants.ActiveAlpha;
+        }
 
         if (this.image != null)
         {
