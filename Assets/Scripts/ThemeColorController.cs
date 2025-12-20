@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,19 +8,42 @@ public class ThemeColorController : MonoBehaviour
     private Image image;
     private Text text;
 
-    private void Start()
+    private void Awake()
     {
-        try
+        this.image = GetComponent<Image>();
+        this.text = GetComponent<Text>();
+    }
+
+    private void OnEnable()
+    {
+        ThemeManager.Instance.ThemeChanged += this.OnThemeChanged;
+        this.ApplyTheme();
+    }
+
+    private void OnThemeChanged(object sender, EventArgs e)
+    {
+        this.ApplyTheme();
+    }
+
+    private void ApplyTheme()
+    {
+        if (ThemeManager.CurrentTheme == null) return;
+
+        Color color = ThemeManager.CurrentTheme.GetColorByName(this.colorName);
+
+        if (this.image != null)
         {
-            this.image = GetComponent<Image>();
-            this.image.color = ThemeManager.CurrentTheme.ThemeColors
-                .First(x => x.Name.Equals(this.colorName)).Color;
+            this.image.color = color;
         }
-        catch (NullReferenceException)
+
+        if (this.text != null)
         {
-            this.text = GetComponent<Text>();
-            this.text.color = ThemeManager.CurrentTheme.ThemeColors
-                .First(x => x.Name.Equals(this.colorName)).Color;
+            this.text.color = color;
         }
+    }
+
+    public void OnDestroy()
+    {
+        ThemeManager.Instance.ThemeChanged -= this.OnThemeChanged;
     }
 }

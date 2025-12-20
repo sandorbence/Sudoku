@@ -1,26 +1,32 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 
 public class ThemeManager : Singleton<ThemeManager>
 {
-    [SerializeField] Theme[] themes;
+    public Theme[] Themes;
     public static Theme CurrentTheme;
+    public EventHandler ThemeChanged;
 
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-        this.ApplyTheme(SaveManager.Data.Theme);
+        this.Themes = Resources.LoadAll<Theme>("Themes");
+        CurrentTheme = this.Themes.FirstOrDefault(x => x.name.Equals(SaveManager.Data.Theme));
     }
 
-    public void ApplyTheme(string name)
+    public void ApplyTheme(Theme theme)
     {
-        Theme themeToApply = this.themes.FirstOrDefault(x => x.name.Equals(name));
-
-        if (themeToApply is null)
+        if (theme is null)
         {
-            themeToApply = this.themes.First(x => x.name.Equals("Default"));
+            theme = this.Themes.First(x => x.name.Equals("Lavender"));
         }
 
-        CurrentTheme = themeToApply;
+        if (SaveManager.Data.Theme.Equals(theme.name)) return;
+
+        CurrentTheme = theme;
+        SaveManager.Data.Theme = theme.name;
+        SaveManager.Save();
+        ThemeChanged?.Invoke(this, new EventArgs());
     }
 }

@@ -86,6 +86,8 @@ public class GameManager : Singleton<GameManager>
 
     public void WriteNumber(short number)
     {
+        if (this.activeCell == null) return;
+
         this.PushPlayerAction();
 
         if (this.isInNoteMode)

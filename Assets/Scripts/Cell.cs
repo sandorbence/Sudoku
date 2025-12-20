@@ -23,8 +23,7 @@ public class Cell : MonoBehaviour
     [SerializeField] private AudioSource cellSelectSound;
     [SerializeField] private AudioSource correctGuessSound;
 
-    private Color activeBackgroundColor = ThemeManager.CurrentTheme.ThemeColors
-        .First(x => x.Name.Equals(ThemeColorName.Tertiary)).Color;
+    private Color activeBackgroundColor = ThemeManager.CurrentTheme.GetColorByName(ThemeColorName.Tertiary);
     private Text display;
     private Button button;
     private Color defaultTextColor;
