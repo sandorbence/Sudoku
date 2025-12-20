@@ -139,13 +139,13 @@ MonoBehaviour:
   activeBackgroundColor: {r: 0.2687344, g: 0.7453182, b: 0.9339623, a: 0.47058824}
   defaultBackgroundColor: {r: 1, g: 1, b: 1, a: 0}
   defaultAlignment: 4
-  defaultFontSize: 36
+  defaultFontSize: 70
   background: {fileID: 5208440096982041806}
   incorrectTextColor: {r: 0.8018868, g: 0.1021271, b: 0.1021271, a: 1}
   noteTextColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
   noteBackgroundColor: {r: 0.54913217, g: 0.6037736, b: 0.1509434, a: 0.47058824}
   noteAlignment: 0
-  noteFontSize: 28
+  noteFontSize: 25
   cellSelectSound: {fileID: -2950071230066139110}
   correctGuessSound: {fileID: 8521403726746282936}
 --- !u!82 &-2950071230066139110
@@ -409,11 +409,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 74b2fb15b50a2aa47a7b2ca46359ac8d, type: 3}
-    m_FontSize: 45
+    m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
-    m_MaxSize: 45
+    m_MaxSize: 70
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1

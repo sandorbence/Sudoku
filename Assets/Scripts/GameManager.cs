@@ -38,6 +38,7 @@ public class GameManager : Singleton<GameManager>
     {
         this.Difficulty = diff;
         this.ClosePopups();
+        this.ClearInputs();
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
         SaveManager.Data.GameState = null;
 
