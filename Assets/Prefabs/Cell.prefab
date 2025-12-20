@@ -144,7 +144,10 @@ MonoBehaviour:
   noteTextColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
   noteBackgroundColor: {r: 0.54913217, g: 0.6037736, b: 0.1509434, a: 0.47058824}
   noteAlignment: 0
-  noteFontSize: 25
+  noteFontSizeBig: 70
+  noteFontSizeMedium: 50
+  noteFontSizeSmall: 35
+  noteFontSizeVerySmall: 25
   cellSelectSound: {fileID: -2950071230066139110}
   correctGuessSound: {fileID: 8521403726746282936}
 --- !u!82 &-2950071230066139110
@@ -434,3 +437,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 2
+  isActiveElement: 0

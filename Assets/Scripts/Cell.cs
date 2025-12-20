@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,15 +14,17 @@ public class Cell : MonoBehaviour
     [Header("Incorrect display")]
     [SerializeField] private Color incorrectTextColor;
     [Header("Note display")]
-    [SerializeField] private Color noteTextColor;
-    [SerializeField] private Color noteBackgroundColor;
     [SerializeField] private TextAnchor noteAlignment;
-    [SerializeField] private int noteFontSize;
+    [SerializeField] private int noteFontSizeBig;
+    [SerializeField] private int noteFontSizeMedium;
+    [SerializeField] private int noteFontSizeSmall;
+    [SerializeField] private int noteFontSizeVerySmall;
     [Header("Sounds")]
     [SerializeField] private AudioSource cellSelectSound;
     [SerializeField] private AudioSource correctGuessSound;
 
     private Color activeBackgroundColor;
+    private Color noteBackgroundColor;
     private Text display;
     private Button button;
     private Color defaultTextColor;
@@ -56,6 +57,8 @@ public class Cell : MonoBehaviour
         this.defaultTextColor = this.display.color;
         this.activeBackgroundColor = ThemeManager.CurrentTheme.GetColorByName(ThemeColorName.Tertiary);
         this.activeBackgroundColor.a = Constants.ActiveAlpha;
+        this.noteBackgroundColor = ThemeManager.CurrentTheme.GetColorByName(ThemeColorName.Secondary);
+        this.noteBackgroundColor.a = Constants.NoteAlpha;
     }
 
     public void SetAsEditable()
@@ -126,15 +129,17 @@ public class Cell : MonoBehaviour
         }
 
         this.display.text = text.ToString();
+        this.display.fontSize = count > 6 ? this.noteFontSizeVerySmall :
+            count > 2 ? this.noteFontSizeSmall : count > 1 ?
+            this.noteFontSizeMedium : this.noteFontSizeBig;
     }
 
     private void ChangeDisplayMode(bool defaultDisplay)
     {
         this.background.color = this.isActive ? this.activeBackgroundColor :
             defaultDisplay ? this.defaultBackgroundColor : this.noteBackgroundColor;
-        this.display.color = defaultDisplay ? this.defaultTextColor : this.noteTextColor;
         this.display.alignment = defaultDisplay ? this.defaultAlignment : this.noteAlignment;
-        this.display.fontSize = defaultDisplay ? this.defaultFontSize : this.noteFontSize;
+        this.display.fontSize = this.defaultFontSize;
     }
 
     public void SetCellState(CellState state)
