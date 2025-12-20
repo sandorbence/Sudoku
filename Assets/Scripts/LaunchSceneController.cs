@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class LaunchSceneController : MonoBehaviour
 {
     public void OnFadeOutFinished()

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f95f5fe2bc434854a9f3c398f584aa39, type: 3}
+  m_Name: Default
+  m_EditorClassIdentifier: 
+  ThemeColors:
+  - Name: 0
+    Color: {r: 0.735849, g: 0.45469916, b: 0.45469916, a: 1}
+  - Name: 1
+    Color: {r: 0.24096651, g: 0.6762091, b: 0.8962264, a: 1}
+  - Name: 2
+    Color: {r: 0.764151, g: 0.35684407, b: 0.35684407, a: 1}

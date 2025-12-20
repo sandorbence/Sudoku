@@ -6,6 +6,11 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioSource backgroundMusic;
 
+    private void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
     public void ChangeVolume(float value, VolumeType volumeType)
     {
         bool isSoundVolume = volumeType.Equals(VolumeType.Sound);

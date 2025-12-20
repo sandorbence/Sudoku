@@ -9,6 +9,7 @@ public class SaveData
     public float SoundVolume = 0.5f;
     public Dictionary<Difficulty, HighScoreData> HighScores = new Dictionary<Difficulty, HighScoreData>();
     public GameState GameState;
+    public string Theme = "Default";
 
     public float GetVolume(VolumeType type)
     {
