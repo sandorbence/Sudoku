@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +8,6 @@ using UnityEngine.UI;
 public class Cell : MonoBehaviour
 {
     [Header("Normal display")]
-    [SerializeField] private Color activeBackgroundColor;
     [SerializeField] private Color defaultBackgroundColor;
     [SerializeField] private TextAnchor defaultAlignment;
     [SerializeField] private int defaultFontSize;
@@ -23,6 +23,8 @@ public class Cell : MonoBehaviour
     [SerializeField] private AudioSource cellSelectSound;
     [SerializeField] private AudioSource correctGuessSound;
 
+    private Color activeBackgroundColor = ThemeManager.CurrentTheme.ThemeColors
+        .First(x => x.Name.Equals(ThemeColorName.Tertiary)).Color;
     private Text display;
     private Button button;
     private Color defaultTextColor;

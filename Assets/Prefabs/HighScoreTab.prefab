@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 2527711955730876751}
   - component: {fileID: 4482258702451236313}
   - component: {fileID: 4415721651678613547}
+  - component: {fileID: 8081303172810829863}
   m_Layer: 5
   m_Name: Difficulty
   m_TagString: Untagged
@@ -179,6 +180,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Easy
+--- !u!114 &8081303172810829863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703970046336117710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorName: 2
 --- !u!1 &1508340568410362615
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorName: 0
+  colorName: 1
 --- !u!1 &4558640871983186260
 GameObject:
   m_ObjectHideFlags: 0
@@ -399,6 +413,7 @@ GameObject:
   - component: {fileID: 4195717045438849118}
   - component: {fileID: 8901119480804916207}
   - component: {fileID: 2838116730510432945}
+  - component: {fileID: 2400450748587642880}
   m_Layer: 5
   m_Name: ScoreLabel
   m_TagString: Untagged
@@ -481,6 +496,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Best Score:'
+--- !u!114 &2400450748587642880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4558640871983186260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorName: 2
 --- !u!1 &5406570493485800409
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +521,7 @@ GameObject:
   - component: {fileID: 2705943161344130316}
   - component: {fileID: 1447841206744409392}
   - component: {fileID: 181261629332809924}
+  - component: {fileID: 5940810272683456847}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -575,6 +604,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: None
+--- !u!114 &5940810272683456847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5406570493485800409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorName: 2
 --- !u!1 &5499490967532040761
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,6 +708,7 @@ GameObject:
   - component: {fileID: 245306398913780398}
   - component: {fileID: 2580764506392797929}
   - component: {fileID: 4294848655476726632}
+  - component: {fileID: 4016957908907579870}
   m_Layer: 5
   m_Name: Time
   m_TagString: Untagged
@@ -748,6 +791,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: None
+--- !u!114 &4016957908907579870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8239013463761001600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorName: 2
 --- !u!1 &8351248896297332655
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,6 +816,7 @@ GameObject:
   - component: {fileID: 663127949126643781}
   - component: {fileID: 8168332347067634570}
   - component: {fileID: 2855161564849286546}
+  - component: {fileID: 1360772468923578587}
   m_Layer: 5
   m_Name: TimeLabel
   m_TagString: Untagged
@@ -842,3 +899,16 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Best Time:'
+--- !u!114 &1360772468923578587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8351248896297332655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorName: 2
