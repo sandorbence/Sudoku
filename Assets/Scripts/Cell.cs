@@ -25,6 +25,7 @@ public class Cell : MonoBehaviour
 
     private Color activeBackgroundColor;
     private Color noteBackgroundColor;
+    private Color noteActiveBackgroundColor;
     private Text display;
     private Button button;
     private Color defaultTextColor;
@@ -59,6 +60,8 @@ public class Cell : MonoBehaviour
         this.activeBackgroundColor.a = Constants.ActiveAlpha;
         this.noteBackgroundColor = ThemeManager.CurrentTheme.GetColorByName(ThemeColorName.Secondary);
         this.noteBackgroundColor.a = Constants.NoteAlpha;
+        this.noteActiveBackgroundColor = ThemeManager.CurrentTheme.GetColorByName(ThemeColorName.Secondary);
+        this.noteBackgroundColor.a = Constants.ActiveAlpha;
     }
 
     public void SetAsEditable()
@@ -104,7 +107,7 @@ public class Cell : MonoBehaviour
 
     public void SetAsActive()
     {
-        this.background.color = this.activeBackgroundColor;
+        this.background.color = this.notes.Count == 0 ? this.activeBackgroundColor : this.noteActiveBackgroundColor;
         this.isActive = true;
     }
 
@@ -136,8 +139,19 @@ public class Cell : MonoBehaviour
 
     private void ChangeDisplayMode(bool defaultDisplay)
     {
-        this.background.color = this.isActive ? this.activeBackgroundColor :
-            defaultDisplay ? this.defaultBackgroundColor : this.noteBackgroundColor;
+        this.display.color = this.defaultTextColor;
+
+        if (this.isActive)
+        {
+            this.background.color = defaultDisplay ?
+                this.activeBackgroundColor : this.noteActiveBackgroundColor;
+        }
+        else
+        {
+            this.background.color = defaultDisplay ?
+                this.defaultBackgroundColor : this.noteBackgroundColor;
+        }
+
         this.display.alignment = defaultDisplay ? this.defaultAlignment : this.noteAlignment;
         this.display.fontSize = this.defaultFontSize;
     }
