@@ -158,6 +158,7 @@ public class Cell : MonoBehaviour
         if (state.Notes != null)
         {
             notes = new HashSet<short>(state.Notes);
+            this.display.color = this.defaultTextColor;
             this.ChangeDisplayMode(defaultDisplay: false);
             this.DisplayNotes();
         }
