@@ -141,8 +141,6 @@ MonoBehaviour:
   defaultFontSize: 70
   background: {fileID: 5208440096982041806}
   incorrectTextColor: {r: 0.8018868, g: 0.1021271, b: 0.1021271, a: 1}
-  noteTextColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
-  noteBackgroundColor: {r: 0.54913217, g: 0.6037736, b: 0.1509434, a: 0.47058824}
   noteAlignment: 0
   noteFontSizeBig: 70
   noteFontSizeMedium: 50
@@ -436,5 +434,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorName: 2
+  colorName: 3
   isActiveElement: 0

@@ -2,5 +2,6 @@
 {
     Primary,
     Secondary,
-    Tertiary
+    Tertiary,
+    Quaternary
 }

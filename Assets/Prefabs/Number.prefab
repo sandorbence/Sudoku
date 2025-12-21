@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorName: 2
+  colorName: 3
   isActiveElement: 0
 --- !u!1 &8633950883735607436
 GameObject:
@@ -241,5 +241,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorName: 0
+  colorName: 1
   isActiveElement: 0

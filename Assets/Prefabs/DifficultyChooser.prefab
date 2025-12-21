@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 2
+  isActiveElement: 0
 --- !u!1 &4424448120789963759
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +340,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorName: 2
+  colorName: 3
+  isActiveElement: 0
 --- !u!1 &4685142082101751746
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,7 +430,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorName: 0
+  colorName: 1
+  isActiveElement: 0
 --- !u!1 &9194852454156616251
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +491,10 @@ PrefabInstance:
     - target: {fileID: 28195046666578585, guid: 17acf85f4d3c09746b1610a69642e868, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386410072889077022, guid: 17acf85f4d3c09746b1610a69642e868, type: 3}
+      propertyPath: colorName
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4557347308330683916, guid: 17acf85f4d3c09746b1610a69642e868, type: 3}
       propertyPath: m_Pivot.x
@@ -642,6 +649,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3386410072889077022, guid: 17acf85f4d3c09746b1610a69642e868, type: 3}
+      propertyPath: colorName
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4557347308330683916, guid: 17acf85f4d3c09746b1610a69642e868, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -794,6 +805,10 @@ PrefabInstance:
     - target: {fileID: 28195046666578585, guid: 17acf85f4d3c09746b1610a69642e868, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386410072889077022, guid: 17acf85f4d3c09746b1610a69642e868, type: 3}
+      propertyPath: colorName
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4557347308330683916, guid: 17acf85f4d3c09746b1610a69642e868, type: 3}
       propertyPath: m_Pivot.x

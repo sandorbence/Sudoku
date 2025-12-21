@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 2
+  isActiveElement: 0
 --- !u!1 &4463468189874548078
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorName: 1
+  colorName: 0
+  isActiveElement: 0
 --- !u!1 &5020497154461073803
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,4 +319,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorName: 2
+  colorName: 3
+  isActiveElement: 0

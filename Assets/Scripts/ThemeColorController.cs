@@ -26,6 +26,11 @@ public class ThemeColorController : MonoBehaviour
         this.ApplyTheme();
     }
 
+    private void OnValidate()
+    {
+        this.ApplyTheme();
+    }
+
     private void ApplyTheme()
     {
         if (ThemeManager.CurrentTheme == null) return;

@@ -534,7 +534,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorName: 0
+  colorName: 1
+  isActiveElement: 0
 --- !u!114 &660514083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1240,6 +1241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 2
+  isActiveElement: 0
 --- !u!114 &1113310394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1427,6 +1429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 1
+  isActiveElement: 0
 --- !u!1001 &1152655407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1655,7 +1658,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorName: 2
+  colorName: 3
+  isActiveElement: 0
 --- !u!1001 &1320515567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1890,7 +1894,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorName: 2
+  colorName: 3
+  isActiveElement: 0
 --- !u!1001 &1385661190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2780,7 +2785,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorName: 2
+  colorName: 3
+  isActiveElement: 0
 --- !u!114 &1734787024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3149,7 +3155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorName: 0
+  colorName: 1
+  isActiveElement: 0
 --- !u!1 &1900646692
 GameObject:
   m_ObjectHideFlags: 0
@@ -3238,7 +3245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorName: 0
+  colorName: 1
+  isActiveElement: 0
 --- !u!1 &1901363123
 GameObject:
   m_ObjectHideFlags: 0
@@ -3432,7 +3440,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorName: 0
+  colorName: 1
+  isActiveElement: 0
 --- !u!1 &1985461150
 GameObject:
   m_ObjectHideFlags: 0
@@ -3537,6 +3546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 0
+  isActiveElement: 0
 --- !u!1 &2044165010
 GameObject:
   m_ObjectHideFlags: 0
@@ -3645,6 +3655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 2
+  isActiveElement: 0
 --- !u!1 &2059313862
 GameObject:
   m_ObjectHideFlags: 0
@@ -3752,6 +3763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorName: 2
+  isActiveElement: 0
 --- !u!1001 &2059581363
 PrefabInstance:
   m_ObjectHideFlags: 0
