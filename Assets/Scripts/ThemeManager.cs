@@ -13,13 +13,14 @@ public class ThemeManager : Singleton<ThemeManager>
         DontDestroyOnLoad(this.gameObject);
         this.Themes = Resources.LoadAll<Theme>("Themes");
         CurrentTheme = this.Themes.FirstOrDefault(x => x.name.Equals(SaveManager.Data.Theme));
+        this.ApplyTheme(CurrentTheme);
     }
 
     public void ApplyTheme(Theme theme)
     {
         if (theme is null)
         {
-            theme = this.Themes.First(x => x.name.Equals("Lavender"));
+            theme = this.Themes.First(x => x.name.Equals("Dark Forest"));
         }
 
         if (SaveManager.Data.Theme.Equals(theme.name)) return;

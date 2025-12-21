@@ -7,6 +7,7 @@ public class ThemeContent : MonoBehaviour
     [SerializeField] private Image primaryColor;
     [SerializeField] private Image secondaryColor;
     [SerializeField] private Image tertiaryColor;
+    [SerializeField] private Image quaternaryColor;
 
     private Button button;
 
@@ -16,6 +17,7 @@ public class ThemeContent : MonoBehaviour
         this.primaryColor.color = theme.GetColorByName(ThemeColorName.Primary);
         this.secondaryColor.color = theme.GetColorByName(ThemeColorName.Secondary);
         this.tertiaryColor.color = theme.GetColorByName(ThemeColorName.Tertiary);
+        this.quaternaryColor.color = theme.GetColorByName(ThemeColorName.Quaternary);
 
         this.button = GetComponent<Button>();
         this.button.onClick.AddListener(() => ThemeManager.Instance.ApplyTheme(theme));
