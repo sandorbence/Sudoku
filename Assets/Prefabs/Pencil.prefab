@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 573457613586589044}
   - component: {fileID: 3747466406671669451}
   - component: {fileID: 2639818935751409008}
+  - component: {fileID: 2603080100425710474}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -65,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8347b8c16a59c6f429616d3ec15e926b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 402a3dde7117dff43898ddc1bef42a98, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -75,6 +76,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2603080100425710474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751856978580466077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a342c900bde36a242ae6f91e114793d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorName: 3
+  isActiveElement: 0
 --- !u!1 &1846178335012164796
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,4 +224,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7224527367e116a45b4a18e0dd6d4646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeBackgroundColor: {r: 1, g: 0.7466493, b: 0, a: 0.47058824}
