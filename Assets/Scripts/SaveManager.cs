@@ -28,8 +28,8 @@ public class SaveManager
         }
 
         string json = JsonConvert.SerializeObject(Data, Formatting.Indented);
-        //string encrypted = EncryptionUtility.Encrypt(json);
-        File.WriteAllText(savePath, json);
+        string encrypted = EncryptionUtility.Encrypt(json);
+        File.WriteAllText(savePath, encrypted);
         DataChanged?.Invoke(null, EventArgs.Empty);
     }
 
@@ -46,13 +46,13 @@ public class SaveManager
         try
         {
             Debug.Log("Loading save file...");
-            string json = File.ReadAllText(savePath);
-            //string json = EncryptionUtility.Decrypt(encrypted);
+            string encrypted = File.ReadAllText(savePath);
+            string json = EncryptionUtility.Decrypt(encrypted);
             Data = JsonConvert.DeserializeObject<SaveData>(json);
         }
         catch (Exception ex)
         {
-            Debug.Log("Exception encountered when loading save file");
+            Debug.Log("Exception encountered when loading save file" + ex.Message);
             Data = new SaveData();
         }
     }
@@ -67,13 +67,6 @@ public class SaveManager
         Data = new SaveData();
     }
 
-    public static void AutoSave() => Save();
-
-    private static void SetupAutoSave()
-    {
-        Application.quitting += Save;
-    }
-
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Initialize()
     {
@@ -81,6 +74,5 @@ public class SaveManager
             return;
 
         Load();
-        SetupAutoSave();
     }
 }
