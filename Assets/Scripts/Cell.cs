@@ -21,7 +21,6 @@ public class Cell : MonoBehaviour
     [SerializeField] private int noteFontSizeVerySmall;
     [Header("Sounds")]
     [SerializeField] private AudioSource cellSelectSound;
-    [SerializeField] private AudioSource correctGuessSound;
 
     private Color activeBackgroundColor;
     private Color noteBackgroundColor;
